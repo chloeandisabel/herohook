@@ -20,14 +20,14 @@ describe Herohook do
       before do
         Herohook.stub :yaml => {
           'app' => {
-            'airbrake' => {'api_key' => 'airbrake_api_key'},
+            'honeybadger' => {'api_key' => 'honeybadger_api_key'},
             'pivotal_tracker' => {'api_key' => 'pivotal_tracker_api_key'}
           }
         }
       end
   
       it "#hooks" do
-        Herohook.hooks.map(&:class).should == [Herohook::Airbrake, Herohook::PivotalTracker]
+        Herohook.hooks.map(&:class).should == [Herohook::Honeybadger, Herohook::PivotalTracker]
       end
   
       it "#config" do

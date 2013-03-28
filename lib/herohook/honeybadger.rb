@@ -1,14 +1,14 @@
-require 'airbrake_tasks'
+require 'honeybadger_tasks'
 
 module Herohook
   
-  class Airbrake < Base
+  class Honeybadger < Base
     
     def perform
-      ::Airbrake.configure do |airbrake_config|
-        airbrake_config.api_key = config["api_key"]
+      ::Honeybadger.configure do |honeybadger_config|
+        honeybadger_config.api_key = config["api_key"]
       end
-      ::AirbrakeTasks.deploy(
+      ::HoneybadgerTasks.deploy(
         :rails_env => config["environment"],
         :scm_revision => params[:head],
         :scm_repository => config["repository_url"],

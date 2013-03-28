@@ -1,7 +1,7 @@
 require 'herohook/config_missing'
 require 'herohook/app'
 require 'herohook/base'
-require 'herohook/airbrake'
+require 'herohook/honeybadger'
 require 'herohook/pivotal_tracker'
 
 require 'active_support/inflector'
