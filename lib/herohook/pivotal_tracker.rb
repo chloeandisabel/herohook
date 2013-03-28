@@ -10,11 +10,14 @@ module Herohook
       ::PivotalTracker::Client.use_ssl = true
       config["emails"].each_value do |email_config|
         stories = stories(email_config["pivotal_tracker_options"])
+        mail_settings = email_config.merge(config["mail_settings"])
         unless stories.empty?
-          mail_settings = email_config.merge(config["mail_settings"])
           mail_settings[:body] = mail_settings[:body].gsub(/%{app}/, app) << double_break << stories_body(stories)
-          ::Pony.mail(mail_settings)
+        else
+          mail_settings[:body] = "No stories released."
         end
+        logger.debug("sending email with settings #{email_config.inspect}")
+        ::Pony.mail(mail_settings)
       end
     end
     
