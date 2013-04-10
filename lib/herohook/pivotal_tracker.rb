@@ -16,7 +16,7 @@ module Herohook
         else
           mail_settings[:body] = "No stories released."
         end
-        logger.debug("sending email with settings #{email_config.inspect}")
+        #logger.debug("sending email with settings #{email_config.inspect}")
         ::Pony.mail(mail_settings)
       end
     end
