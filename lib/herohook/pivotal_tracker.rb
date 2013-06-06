@@ -6,6 +6,7 @@ module Herohook
   class PivotalTracker < Base
   
     def perform
+      logger.debug("performing PivotalTracker with config  #{config.inspect}")
       ::PivotalTracker::Client.token = config["api_token"]
       ::PivotalTracker::Client.use_ssl = true
       config["emails"].each_value do |email_config|
