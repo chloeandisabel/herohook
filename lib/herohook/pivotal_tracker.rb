@@ -7,7 +7,7 @@ module Herohook
   
     def perform
       puts("performing PivotalTracker with config #{config.inspect}")
-      PivotalTracker::Client.token  = config["api_token"]
+      ::PivotalTracker::Client.token  = config["api_token"]
       #::PivotalTracker::Client.use_ssl = true
       config["emails"].each_value do |email_config|
         stories = stories(email_config["pivotal_tracker_options"])
@@ -32,7 +32,7 @@ module Herohook
     end
     
     def project
-      @project ||= PivotalTracker::Project.find(config["project_id"])
+      @project ||= ::PivotalTracker::Project.find(config["project_id"])
     end
     
     def story_ids
