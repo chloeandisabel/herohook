@@ -1,3 +1,4 @@
+require 'honeybadger'
 require 'honeybadger_tasks'
 
 module Herohook
